@@ -126,7 +126,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
+      <main className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 print:block">
         
         {/* Left Side: Items List (Hidden in print) */}
         <div className="lg:w-2/3 no-print">
@@ -156,15 +156,15 @@ export default function App() {
         </div>
 
         {/* Right Side: Invoice */}
-        <div className="lg:w-1/3 print-w-full">
-          <div className="bg-white/60 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white p-6 sticky top-32 print-shadow-none print-border-none print-bg-transparent print-p-0 print-backdrop-blur-none">
+        <div className="lg:w-1/3 print:w-full">
+          <div className="bg-white/60 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white p-6 sticky top-32 print:static print:shadow-none print:border-none print:bg-transparent print:p-0 print:backdrop-blur-none print:text-black">
             
             {/* Invoice Print Header */}
-            <div className="text-center mb-6 pb-6 border-b border-slate-200 print-mb-4 print-pb-4">
-              <h2 className="text-2xl font-bold text-slate-900">الدكتور البيطري</h2>
-              <h3 className="text-3xl font-extrabold text-blue-900 mt-2">محمد زغلول سعد</h3>
-              <p className="text-slate-600 mt-1 font-medium">فاتورة طلب أدوية ومستهلكات</p>
-              <div className="text-sm text-slate-500 mt-2 font-medium print-text-slate-600">
+            <div className="text-center mb-6 pb-6 border-b border-slate-200 print:mb-4 print:pb-4 print:border-black">
+              <h2 className="text-2xl font-bold text-slate-900 print:text-black">الدكتور البيطري</h2>
+              <h3 className="text-3xl font-extrabold text-blue-900 mt-2 print:text-black">محمد زغلول سعد</h3>
+              <p className="text-slate-600 mt-1 font-medium print:text-black">فاتورة طلب أدوية ومستهلكات</p>
+              <div className="text-sm text-slate-500 mt-2 font-medium print:text-black">
                 التاريخ: {new Date().toLocaleDateString('ar-EG')}
               </div>
             </div>
@@ -180,7 +180,7 @@ export default function App() {
               ) : (
                 <table className="w-full text-right border-collapse">
                   <thead>
-                    <tr className="border-b-2 border-slate-200 text-slate-700">
+                    <tr className="border-b-2 border-slate-200 text-slate-700 print:border-black print:text-black">
                       <th className="py-2 px-2 w-16 text-center">العدد</th>
                       <th className="py-2 px-2">الصنف</th>
                       <th className="py-2 px-2 w-10 no-print"></th>
@@ -194,12 +194,12 @@ export default function App() {
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, scale: 0.95 }}
-                          className="border-b border-white/50 hover:bg-white/40 transition-colors"
+                          className="border-b border-white/50 hover:bg-white/40 transition-colors print:border-slate-300"
                         >
-                          <td className="py-3 px-2 text-center font-bold text-lg text-blue-700 w-16 whitespace-nowrap">
+                          <td className="py-3 px-2 text-center font-bold text-lg text-blue-700 print:text-black w-16 whitespace-nowrap">
                             {item.quantity}
                           </td>
-                          <td className="py-3 px-2 text-slate-800 font-bold">
+                          <td className="py-3 px-2 text-slate-800 font-bold print:text-black">
                             {item.name}
                           </td>
                           <td className="py-3 px-2 text-left no-print w-10">
