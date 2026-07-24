@@ -1,0 +1,6 @@
+{
+  "name": "نظام طلبات الأدوية البيطرية",
+  "description": "تطبيق لطلب الأدوية والمستهلكات وإصدار الفواتير للدكتور البيطري محمد زغلول سعد.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
