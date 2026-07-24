@@ -178,44 +178,56 @@ export default function App() {
                   <p className="text-sm mt-1">قم باختيار الأصناف لإضافتها</p>
                 </div>
               ) : (
-                <table className="w-full text-right border-collapse">
-                  <thead>
-                    <tr className="border-b-2 border-slate-200 text-slate-700 print:border-black print:text-black">
-                      <th className="py-2 px-2 w-16 text-center">العدد</th>
-                      <th className="py-2 px-2">الصنف</th>
-                      <th className="py-2 px-2 w-10 no-print"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
+                <div className="w-full text-right">
+                  {/* Print Table Header (2 columns) */}
+                  <div className="hidden print:grid grid-cols-2 gap-x-12 mb-2 font-bold border-b-2 border-black pb-2 text-black">
+                    <div className="flex">
+                      <div className="w-16 text-center">العدد</div>
+                      <div className="flex-1 px-2">الصنف</div>
+                    </div>
+                    <div className="flex">
+                      <div className="w-16 text-center">العدد</div>
+                      <div className="flex-1 px-2">الصنف</div>
+                    </div>
+                  </div>
+                  
+                  {/* Screen Table Header */}
+                  <div className="flex print:hidden border-b-2 border-slate-200 text-slate-700 pb-2 mb-2 font-bold">
+                    <div className="w-16 text-center">العدد</div>
+                    <div className="flex-1 px-2">الصنف</div>
+                    <div className="w-10"></div>
+                  </div>
+
+                  <div className="print:grid print:grid-cols-2 print:gap-x-12 print:gap-y-1">
                     <AnimatePresence>
                       {items.map(item => (
-                        <motion.tr
+                        <motion.div
                           key={item.id}
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, scale: 0.95 }}
-                          className="border-b border-white/50 hover:bg-white/40 transition-colors print:border-slate-300"
+                          className="flex items-center py-2 border-b border-white/50 hover:bg-white/40 transition-colors print:border-slate-300 print:py-1.5 print:break-inside-avoid"
                         >
-                          <td className="py-3 px-2 text-center font-bold text-lg text-blue-700 print:text-black w-16 whitespace-nowrap">
+                          <div className="w-16 text-center font-bold text-lg text-blue-700 print:text-black whitespace-nowrap">
                             {item.quantity}
-                          </td>
-                          <td className="py-3 px-2 text-slate-800 font-bold print:text-black">
+                          </div>
+                          <div className="flex-1 px-2 text-slate-800 font-bold print:text-black">
                             {item.name}
-                          </td>
-                          <td className="py-3 px-2 text-left no-print w-10">
+                          </div>
+                          <div className="w-10 text-left no-print flex justify-end">
                             <button
                               onClick={() => handleRemoveItem(item.id)}
-                              className="text-red-500 hover:text-white p-1 rounded-md hover:bg-red-500 transition-colors bg-white/40 border border-white/50"
+                              className="text-red-500 hover:text-white p-1.5 rounded-md hover:bg-red-500 transition-colors bg-white/40 border border-white/50 inline-flex items-center justify-center"
                               title="حذف"
                             >
                               <X className="h-4 w-4" />
                             </button>
-                          </td>
-                        </motion.tr>
+                          </div>
+                        </motion.div>
                       ))}
                     </AnimatePresence>
-                  </tbody>
-                </table>
+                  </div>
+                </div>
               )}
             </div>
 
